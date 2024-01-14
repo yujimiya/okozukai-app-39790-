@@ -1,33 +1,21 @@
 # usersテーブル
-
-| Column               | Type   | Option                    |
-|----------------------|--------|---------------------------|
-| nickname             | string | null: false               |
-| email                | string | null: false               |
-| encrypted_password   | string | null: false, unique: true |
+| Column               | Type       | Option                       |
+|----------------------|------------|------------------------------|
+| nickname             | string     | null: false                  |
+| email                | string     | null: false                  |
+| encrypted_password   | string     | null: false, unique: true    |
+| role_id              | integer    | null: false                  |
+| familymembers        | references | null:false, foreign_key:true |
 
 belongs_to:familyMember
-has_many: chiles
-
-# chilesテーブル
-| Column               | Type       | Option                       |
-|----------------------|------------|------------------------------|
-| user                 | references | null:false, foreign_key:true |
-| nickname             | string     | null:false                   |
-| birthday             | date       | null: false                  |
-
-belongs_to: user
-belongs_to: familyMember
+has_many: events
 
 # familyMembersテーブル
-| Column               | Type       | Option                       |
-|----------------------|------------|------------------------------|
-| users                | references | null:false, foreign_key:true |
-| chiles               | references | null:false, foreign_key:true |
+| Column               | Type       | Option      |
+|----------------------|------------|-------------|
+| falmily_name         | string    | null:false  |
 
 has_many: users
-has_many: chiles
-has_one: event
 
 # eventsテーブル
 | Column               | Type       | Option                       |
@@ -38,9 +26,8 @@ has_one: event
 | total_price          | integer    | null: false                  |
 | goal_price           | integer    | null: false                  |
 | user                 | references | null:false, foreign_key:true |
-| chiles               | references | null:false, foreign_key:true |
 
-belongs_to: familyMember
+belongs_to: user
 
 
 
