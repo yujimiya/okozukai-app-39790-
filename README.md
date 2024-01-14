@@ -7,7 +7,7 @@
 | role_id              | integer    | null: false                  |
 | familymembers        | references | null:false, foreign_key:true |
 
-belongs_to:familyMember
+belongs_to:family_member
 has_many: events
 
 # familyMembersテーブル
