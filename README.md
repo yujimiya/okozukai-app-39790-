@@ -5,15 +5,16 @@
 | email                | string     | null: false                  |
 | encrypted_password   | string     | null: false, unique: true    |
 | role_id              | integer    | null: false                  |
-| familymembers        | references | null:false, foreign_key:true |
-
-belongs_to:familyMember
+|
+belongs_to:family_member
 has_many: events
 
-# familyMembersテーブル
+<!-- # familyMembersテーブル
 | Column               | Type       | Option      |
 |----------------------|------------|-------------|
-| falmily_name         | string    | null:false  |
+| falmily_name         | string     | null:false  |
+| user                 | references | null:false, foreign_key:true |
+ -->
 
 has_many: users
 
