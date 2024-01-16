@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_14_061803) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_15_121726) do
+  create_table "events", charset: "utf8", force: :cascade do |t|
+    t.integer "unit_price", null: false
+    t.date "help_date", null: false
+    t.integer "help_count", null: false
+    t.integer "total_price"
+    t.integer "goal_price", null: false
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
   create_table "family_members", charset: "utf8", force: :cascade do |t|
     t.string "family_name", null: false
     t.datetime "created_at", null: false

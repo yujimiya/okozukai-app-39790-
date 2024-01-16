@@ -80,3 +80,6 @@ end
 
 gem 'devise'
 gem 'active_hash'
+gem 'simple_calendar', '~> 2.0'
+gem 'sassc-rails'
+gem 'rails-i18n'
