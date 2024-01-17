@@ -10,12 +10,6 @@
   background-color: rgb(9, 235, 35);
 }
 
-.search-bar-contents {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .top-logo {
   font-size: 36px;
   text-decoration: none;
@@ -45,13 +39,19 @@
 
 }
 
-.category-list {
+.result {
   text-decoration: none;
   margin-right: 3vw;
   color: white;
 }
 
-.brand-list {
+.goal {
+  text-decoration: none;
+  color: white;
+  margin-right: 3vw;
+}
+
+.event-list{
   text-decoration: none;
   color: white;
   margin-right: 3vw;
