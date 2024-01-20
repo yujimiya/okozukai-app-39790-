@@ -11,9 +11,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def goal_price
+    self.goal_price ||= 0
+  end
+
   private
 
   def users_params
-    params.require(:user).permit(:nickname, :email)
+    params.require(:user).permit(:nickname, :email, :goal_price)
   end
 end
