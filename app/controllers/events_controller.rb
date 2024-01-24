@@ -12,10 +12,14 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = current_user.events.build(event_params)
+      @event = current_user.events.build(event_params)
+      @event.virtual_unit_price = params[:event][:virtual_unit_price]
 
-    if @event.save#単価を設定してもカウントされないようにしたい
-      redirect_to events_path
+    if @event.save
+      render turbo_stream: [
+        turbo_stream.replace(@event, partial: "events/event", locals: { event: @event }),
+        turbo_stream.redirect_to(events_path)
+      ]
     else
       render :new
     end
@@ -27,6 +31,6 @@ class EventsController < ApplicationController
   private 
 
   def event_params
-    params.require(:event).permit(:unit_price)
+    params.require(:event).permit(:virtual_unit_price)
   end
 end
