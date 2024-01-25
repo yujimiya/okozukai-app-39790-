@@ -1,5 +1,7 @@
 <%= render "shared/header" %>
 
 <%= month_calendar do |date| %>
-  <%= date.day %>
+  <div class="calendar-day" data-date="<%= date %>">
+    <%= date.day %>
+  </div>
 <% end %>

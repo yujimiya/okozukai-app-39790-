@@ -13,10 +13,6 @@
 ActiveRecord::Schema[7.0].define(version: 2024_01_15_121726) do
   create_table "events", charset: "utf8", force: :cascade do |t|
     t.integer "unit_price", null: false
-    t.date "help_date", null: false
-    t.integer "help_count", null: false
-    t.integer "total_price"
-    t.integer "goal_price", null: false
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -34,6 +30,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_15_121726) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.integer "role_id", null: false
+    t.integer "goal_price", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -43,4 +40,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_15_121726) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "events", "users"
 end
