@@ -3,7 +3,6 @@ class EventsController < ApplicationController
 
   def index
     @events = current_user.events
-    @total_price = @events.sum(:unit_price)
     @goal_price = current_user.try(:goal_price)
   end
   
@@ -12,14 +11,9 @@ class EventsController < ApplicationController
   end
 
   def create
-      @event = current_user.events.build(event_params)
-      @event.virtual_unit_price = params[:event][:virtual_unit_price]
-
+      @event = current_user.events.new(event_params)
     if @event.save
-      render turbo_stream: [
-        turbo_stream.replace(@event, partial: "events/event", locals: { event: @event }),
-        turbo_stream.redirect_to(events_path)
-      ]
+      redirect_to events_path
     else
       render :new
     end
@@ -31,6 +25,6 @@ class EventsController < ApplicationController
   private 
 
   def event_params
-    params.require(:event).permit(:virtual_unit_price)
+    params.require(:event).permit(:unit_price)
   end
 end

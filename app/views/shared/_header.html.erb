@@ -5,7 +5,7 @@
   </div>
   <div class='nav'>
     <ul class='lists-left'>
-      <li class="result"><%= "おこずかい合計：#{@total_price}" %></li>
+      <li class="result" id="totalAmount"><%= "おこずかい合計：" %></li>
       <li class="goal"><%= "おこずかい目標：#{@goal_price}円" %></li>
       <li><%= link_to 'おこずかい設定', new_event_path, class: "event-list" %></li>
     </ul>
