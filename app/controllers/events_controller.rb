@@ -4,6 +4,7 @@ class EventsController < ApplicationController
   def index
     @events = current_user.events
     @goal_price = current_user.try(:goal_price)
+    @event = @events.first
   end
   
   def new
@@ -25,6 +26,6 @@ class EventsController < ApplicationController
   private 
 
   def event_params
-    params.require(:event).permit(:unit_price)
+    params.require(:event).permit(:user_id, :help_date)
   end
 end

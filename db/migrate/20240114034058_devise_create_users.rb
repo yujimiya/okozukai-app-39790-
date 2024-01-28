@@ -9,6 +9,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.0]
       t.string :encrypted_password, null: false, default: ""
       t.integer :role_id,           null: false
       t.integer :goal_price,        null: false, default: 0
+      t.integer :unit_price,        null: false, default: 30
       # t.references :family_member,  null: false, foreign_key: true
 
       ## Recoverable
