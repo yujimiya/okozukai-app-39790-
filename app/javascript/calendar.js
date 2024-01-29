@@ -2,11 +2,27 @@ const date = () => {
   // 各日にクリックイベントを追加
   const calendarDays = document.querySelectorAll('.calendar-day');
   
-  calendarDays.forEach(function(day) {
-    day.addEventListener('click', function() {
+  calendarDays.forEach(function (day) {
+    day.addEventListener('click', function () {
       // クリックされた日付を取得
       const clickedDate = this.dataset.date;
-      
+
+      // サーバーサイドから取得したイベントごとのmarkedの状態を取得
+      const marked = gon.marked_events;
+
+      // デバッグメッセージを追加
+      console.log('clickedDate:', clickedDate);
+      // console.log('marked:', marked);
+
+      // markedの状態に応じてUIを更新
+      if (marked[clickedDate]) {
+        day.classList.add('marked');
+        day.style.backgroundColor = 'yellow';
+      } else {
+        day.classList.remove('marked');
+        day.style.backgroundColor = '';
+      }
+
       // Ajaxリクエストを作成
       const xhr = new XMLHttpRequest();
       xhr.open('POST', '/events', true);
@@ -20,7 +36,7 @@ const date = () => {
       xhr.setRequestHeader('X-CSRF-Token', csrfToken);
       
       // レスポンスを処理するコールバック関数
-      xhr.onload = function() {
+      xhr.onload = function () {
         if (xhr.status === 200) {
           console.log('イベントが作成されました');
           // イベントが作成された後の処理を追加
@@ -33,6 +49,7 @@ const date = () => {
       // サーバーに送信するデータ
       const eventData = {
         help_date: clickedDate,
+        marked: marked.includes(clickedDate)
         // その他の必要なデータ
       };
       

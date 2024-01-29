@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def update
     if current_user.update(users_params)
-      redirect_to events_path
+      redirect_to root_path
     else
       render :edit, status: :unprocessable_entity
     end

@@ -14,6 +14,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_15_121726) do
   create_table "events", charset: "utf8", force: :cascade do |t|
     t.date "help_date", null: false
     t.bigint "user_id"
+    t.boolean "marked", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_events_on_user_id"

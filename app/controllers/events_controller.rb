@@ -3,8 +3,10 @@ class EventsController < ApplicationController
 
   def index
     @events = current_user.events
+    gon.marked_events = @events.where(marked: true).pluck(:help_date)  # 例として marked が true のイベントの help_date を取得
     @goal_price = current_user.try(:goal_price)
     @event = @events.first
+    @total_price = @events.sum { |event| event.user.unit_price }
   end
   
   def new
@@ -12,12 +14,22 @@ class EventsController < ApplicationController
   end
 
   def create
-      @event = current_user.events.new(event_params)
-    if @event.save
-      redirect_to events_path
+    @events = current_user.events
+    gon.marked_events = @events.where(marked: true ).pluck(:help_date)  # 例として marked が true のイベントの help_date を取得
+    clicked_data = current_user.events.new(event_params)
+    
+    existing_event = @events.find_by(help_date: clicked_data)
+
+    if existing_event
+      # イベントが既に存在する場合、marked の値をトグル
+      existing_event.update(marked: !existing_event.marked)
     else
-      render :new
+      # イベントが存在しない場合、新しいイベントを作成
+      @event = current_user.events.new(event_params)
+      @event.marked = true
+      @event.save
     end
+    redirect_to events_path
   end
 
   def show
@@ -26,6 +38,6 @@ class EventsController < ApplicationController
   private 
 
   def event_params
-    params.require(:event).permit(:user_id, :help_date)
+    params.require(:event).permit(:user_id, :help_date, :marked)
   end
 end
