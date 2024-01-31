@@ -8,11 +8,12 @@ const date = () => {
       const clickedDate = this.dataset.date;
 
       // サーバーサイドから取得したイベントごとのmarkedの状態を取得
-      const marked = gon.marked_events;
+      const marked = gon.marked_events
 
+     
       // デバッグメッセージを追加
       console.log('clickedDate:', clickedDate);
-      // console.log('marked:', marked);
+      console.log('marked:', marked);
 
       // markedの状態に応じてUIを更新
       if (marked[clickedDate]) {
@@ -70,3 +71,4 @@ const date = () => {
 
 window.addEventListener('turbo:load', date);
 window.addEventListener('turbo:render', date);
+

@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def update
     if current_user.update(users_params)
-      redirect_to root_path
+      redirect_to events_path
     else
       render :edit, status: :unprocessable_entity
     end
@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   def goal_price
     self.goal_price ||= 0
   end
-
+  
   private
 
   def users_params
