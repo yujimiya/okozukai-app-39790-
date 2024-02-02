@@ -18,7 +18,7 @@ const date = () => {
       // markedの状態に応じてUIを更新
       if (marked[clickedDate]) {
         day.classList.add('marked');
-        day.style.backgroundColor = 'yellow';
+        day.style.backgroundColor = 'pink';
       } else {
         day.classList.remove('marked');
         day.style.backgroundColor = '';
@@ -61,7 +61,7 @@ const date = () => {
       this.classList.toggle('marked');
 
       if (this.classList.contains('marked')) {
-        this.style.backgroundColor = 'yellow';
+        this.style.backgroundColor = 'pink';
       } else {
         this.style.backgroundColor = '';
       }
