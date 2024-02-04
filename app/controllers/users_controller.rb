@@ -1,23 +1,22 @@
 class UsersController < ApplicationController
-
+  before_action :set_user, only: [:edit, :update]
   def edit
   end
 
   def update
-    if current_user.update(user_params)
-      redirect_to root_path
+    if @user.update(users_params)
+      redirect_to events_path
     else
-      render :edit, status: :unprocessable_entity
+      redirect_to events_path, alert: "Failed to update user"
     end
   end
 
-  def goal_price
-    self.goal_price ||= 0
+  private
+  def set_user
+    @user = current_user
   end
 
-  private
-
   def users_params
-    params.require(:user).permit(:nickname, :email, :goal_price)
+    params.require(:user).permit(:nickname, :email, :goal_price, :unit_price)
   end
 end
