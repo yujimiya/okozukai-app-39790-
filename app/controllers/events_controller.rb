@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @events = current_user.events
+    @events = Event.all.order(:help_date)
     gon.marked_events = @events.where(marked: 1).pluck(:help_date)  # 例として marked が true のイベントの help_date を取得
     @goal_price = current_user.try(:goal_price)
     @event = @events.first
@@ -24,6 +24,7 @@ class EventsController < ApplicationController
       render :new
     end
   end
+
 
 
   private 

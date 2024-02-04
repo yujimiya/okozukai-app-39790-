@@ -1,3 +1,4 @@
+
 <%# CSS・・・assets/stylesheets/shared/header.css %>
 <header class='top-page-header'>
   <div class='search-bar-contents'>
@@ -7,11 +8,6 @@
     <ul class='lists-left'>
       <li class="result" id="totalAmount"><%= "おこずかい合計：#{@total_price}円" %></li>
       <li class="goal"><%= "おこずかい目標：#{@goal_price}円" %></li>
-        <%# <li id="unit">
-          <%= link_to "単価設定:#{@total_price}", new_event_path, class: "event-list" %>
-          <%# <input type="number" id="unit-price" value="<%= current_user.unit_price" min="0"> %>
-          <%# <button id="update-unit-price">更新</button> %>
-        </li>   
     </ul>
     <ul class='lists-right'>
       <%if user_signed_in? %>

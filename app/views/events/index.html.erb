@@ -1,7 +1,14 @@
 <%= render "shared/header" %>
 
-<%= month_calendar do |date| %>
-  <div class="calendar-day" data-date="<%= date %>">
+<%= month_calendar events: @events do |date, events| %>
+  <div class="calendar-day <%= 'marked-day' if events.any?(&:marked) %>" data-date="<%= date %>">
     <%= date.day %>
+    <% events.each do |event| %>
+      <% if event.marked %>
+        <span class="marked-event">★</span> 
+      <% else %>
+        <%= event.title %>
+      <% end %>
+    <% end %>
   </div>
 <% end %>
