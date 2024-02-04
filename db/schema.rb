@@ -14,7 +14,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_15_121726) do
   create_table "events", charset: "utf8", force: :cascade do |t|
     t.date "help_date", null: false
     t.bigint "user_id"
-    t.boolean "marked", default: false
+    t.boolean "marked", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_events_on_user_id"
@@ -24,7 +24,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_15_121726) do
     t.string "nickname", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.integer "role_id", null: false
+    t.integer "role_id"
+    t.string "child_nickname", null: false
     t.integer "goal_price", default: 0, null: false
     t.integer "unit_price", default: 30, null: false
     t.string "reset_password_token"

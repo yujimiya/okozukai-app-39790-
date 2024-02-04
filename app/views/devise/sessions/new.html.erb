@@ -19,14 +19,14 @@
               <%= f.label :password%>
               <i>(英数字6文字以上)</i>
             </div>
-            <div class="field">
+              <%= f.password_field :password, autocomplete: "off"%>
+            </div>
+          </div>
+          <div class="field">
               Role(選択して下さい)
             </div>
             <%= f.collection_select(:role_id, Role.all, :id, :name, {}, {class:"select-box", id:"item-shipping-fee-status"}) %>
             <div class='field-input'>
-              <%= f.password_field :password, autocomplete: "off"%>
-            </div>
-          </div>
           <div class='actions'>
             <%= f.submit "Log in", class: 'btn'%>
           </div>
