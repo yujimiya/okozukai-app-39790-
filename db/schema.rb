@@ -25,7 +25,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_15_121726) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.integer "role_id"
-    t.string "child_nickname", null: false
     t.integer "goal_price", default: 0, null: false
     t.integer "unit_price", default: 30, null: false
     t.string "reset_password_token"
