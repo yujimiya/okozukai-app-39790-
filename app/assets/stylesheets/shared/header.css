@@ -7,7 +7,7 @@
   padding: 2vh 15vw;
   display: flex;
   flex-direction: column;
-  background-color: white;
+  background-image: url('/assets/sky_00009.jpg');
 }
 
 .top-logo {
@@ -15,6 +15,7 @@
   font-weight: bold;
   text-decoration: none;
   color: black;
+  font-family: 'Comic Sans MS', cursive;
 }
 
 
