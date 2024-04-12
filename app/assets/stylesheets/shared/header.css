@@ -7,7 +7,7 @@
   padding: 2vh 15vw;
   display: flex;
   flex-direction: column;
-  background-image: url('/assets/images/sky_00009.jpg');
+  background-image: url('/assets/sky_00009.jpg');
 }
 
 .top-logo {
